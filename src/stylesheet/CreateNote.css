@@ -1,0 +1,79 @@
+/* Ensures full height and centers content */
+.app-body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full screen height */
+    display: flex;
+    align-items: center; /* Vertically center */
+    justify-content: center; /* Horizontally center */
+    background-color: #f5f5f5; /* Light background for better contrast */
+}
+
+/* Note Creator Section */
+.note-creator {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row; /* Stack buttons and input vertically */
+    align-items: center; /* Center elements horizontally */
+}
+
+/* Buttons */
+.note-action-btn {
+    background: none;
+    border: none;
+    color: gray;
+    font-size: medium;
+    margin: 5px; /* Adds spacing between buttons */
+}
+
+.note-action-btn:hover {
+    background-color: rgb(105, 105, 105);
+    transition: 2s;
+}
+
+/* Title Input */
+.note-title-input {
+    font-size: 40px;
+    background: none;
+    border: none;
+    text-align: center; /* Centers text inside input */
+    width: 100%; /* Makes input responsive */
+    max-width: 500px; /* Prevents input from being too wide */
+    margin-left: 230px;
+}
+
+.recorder
+{
+    background-color: rgb(255, 61, 100);
+    border: none;
+    width: 45px;
+    height: 40px;
+    border-radius: 5px;
+}
+.summarize
+{
+    width: 170px;
+    background-color: rgb(76, 139, 255);
+    border: none;
+    height: 20px;
+    color: white;
+    height: 40px;
+    border-radius: 5px;
+}
+.buttons
+{
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: -15px;
+    margin-left: 100px
+}
+.textarea
+{
+    width: 1250px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 224);
+    font-size: 20px;
+    border: none;
+}
