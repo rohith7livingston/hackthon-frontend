@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import io from 'socket.io-client';
 import './../stylesheet/CollabPage.css';
-// import NotesGrid from '../components/NotesGrid';
+
+const socket = io('http://localhost:3001');
+
 const CollabPage = () => {
   const [createNoteId, setCreateNoteId] = useState('');
   const [createPassCode, setCreatePass] = useState('');
   const [joinNoteId, setJoinNoteId] = useState('');
   const [joinPassCode, setJoinPass] = useState('');
+  const navigate = useNavigate();
 
   const handleCreate = async () => {
     if (!createNoteId || !createPassCode) {
       alert("Please fill in all fields.");
       return;
     }
-
+    
     try {
       const response = await fetch("http://localhost:3001/collab-create", {
         method: "POST",
@@ -22,9 +27,9 @@ const CollabPage = () => {
         body: JSON.stringify({
           noteId: createNoteId,
           passCode: createPassCode,
-          title: "New Collaborative Note", // Fixed casing
+          title: "New Collaborative Note", 
           detail: "This is a collaborative note.",
-          adminEmail: "hai@gadu.com" // Replace with logged-in user's email if available
+          adminEmail: "hai@gadu.com"
         }),
       });
 
@@ -32,6 +37,7 @@ const CollabPage = () => {
 
       if (response.ok) {
         alert("Collab note created successfully!");
+        navigate(`/collab-editor/${createNoteId}`);
       } else {
         alert(data.error);
       }
@@ -56,7 +62,7 @@ const CollabPage = () => {
         body: JSON.stringify({
           noteId: joinNoteId,
           passCode: joinPassCode,
-          userEmail: "hai@gadu.com", // Fetch logged-in user's email
+          userEmail: "hai@gadu.com",
         }),
       });
 
@@ -64,6 +70,7 @@ const CollabPage = () => {
 
       if (response.ok) {
         alert("Successfully joined the collab note!");
+        navigate(`/collab-editor/${joinNoteId}`);
       } else {
         alert(data.error);
       }
@@ -80,7 +87,7 @@ const CollabPage = () => {
           <h1>Create a collab</h1>
           <input type='text' placeholder='NoteId..' className='input-box' value={createNoteId} onChange={(e) => setCreateNoteId(e.target.value)} /><br />
           <input type='text' placeholder='Note PassCode...' className='input-box' value={createPassCode} onChange={(e) => setCreatePass(e.target.value)} /><br />
-          <button className='making' onClick={handleCreate}>Create</button>
+          <button className='making' onClick={handleCreate} >create</button>
         </div>
         <div className='create'>
           <h1>Join a collab</h1>
@@ -89,7 +96,6 @@ const CollabPage = () => {
           <button className='making' onClick={handleJoin}>Join</button>
         </div>
       </div>
-      {/* <NotesGrid/> */}
     </div>
   );
 };

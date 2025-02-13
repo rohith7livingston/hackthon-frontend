@@ -1,14 +1,12 @@
 import { useState } from "react";
-import "./../stylesheet/Login.css";
 import { useNavigate } from "react-router-dom";
-export let userEmail = ""; 
+import "./../stylesheet/Login.css";
 
 function Login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  userEmail = formData.email;
 
   const [error, setError] = useState("");
   const navigate = useNavigate(); // Used for navigation
@@ -36,7 +34,10 @@ function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        // If email exists and password is correct, navigate to home
+        // Store the user email in localStorage
+        localStorage.setItem("userEmail", formData.email);
+
+        // Navigate to home page
         navigate("/home");
       } else {
         setError(data.error); // Show error message

@@ -8,6 +8,7 @@ import Voice from './components/Voice';
 import EditNote from './pages/EditNote';
 import './App.css'
 import CollabPage from './pages/CollabPage';
+import CollabEditor from './pages/CollabEditor'
 function App() {
   return (
     <main id="app">
@@ -20,7 +21,8 @@ function App() {
           <Route path="/voice" element={< Voice/>} />
           <Route path="/edit-note" element={<EditNote />} />
           <Route path="/collab-page" element={<CollabPage/>}/>
-        </Routes>
+          <Route path="/collab-editor/:noteId" element={<CollabEditor />} />
+          </Routes>
       </BrowserRouter>
     </main>
   );

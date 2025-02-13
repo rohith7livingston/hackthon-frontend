@@ -104,7 +104,7 @@ const handleEdit = (note) => {
           </button>
           <button className="new-note-btn collab-note">
             <FiPlus />
-            <Link to="/collab-page" className="new-note-collab">
+            <Link to="/collab-page" className="new-note-collab link">
               Collab Note
             </Link>
           </button>
