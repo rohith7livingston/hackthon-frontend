@@ -7,6 +7,7 @@ import CreateNote from './pages/CreateNote'
 import Voice from './components/Voice';
 import EditNote from './pages/EditNote';
 import './App.css'
+import CollabPage from './pages/CollabPage';
 function App() {
   return (
     <main id="app">
@@ -14,10 +15,11 @@ function App() {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={< Login/>} />
-          <Route path="/home" element={< Home/>} />
+          <Route path="/home" element={< Home />} />
           <Route path="/create-note" element={< CreateNote/>} />
           <Route path="/voice" element={< Voice/>} />
           <Route path="/edit-note" element={<EditNote />} />
+          <Route path="/collab-page" element={<CollabPage/>}/>
         </Routes>
       </BrowserRouter>
     </main>

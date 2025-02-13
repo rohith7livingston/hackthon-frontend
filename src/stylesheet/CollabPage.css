@@ -1,0 +1,59 @@
+/* General Page Styling */
+.Collab-check {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 50vw;
+  }
+  
+  /* Join & Create sections */
+  .join, .create {
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+  }
+  
+  /* Input Fields */
+  .input-box {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+  }
+  
+  /* Buttons */
+  .making {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .making:hover {
+    background: #0056b3;
+  }
+  
+  /* Notes Grid for Collaborative Notes */
+  .notes-grid {
+    margin-top: 20px;
+    padding: 20px;
+    background: #ffffe0;
+    border-radius: 10px;
+    min-height: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  

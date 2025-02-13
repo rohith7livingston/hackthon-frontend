@@ -1,170 +1,172 @@
 /* Home.css */
 :root {
-  --background: #fdf6ee;
-  --sidebar-bg: #f5eadd;
-  --primary-text: #4a4a4a;
-  --note-orange-dark: #eb7956;
-  --note-orange-light: #f8d1b3;
-  --note-yellow-dark: #e7b65b;
-  --note-yellow-light: #f4e1a1;
-  --border-radius: 16px;
-  --shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-  background-color: var(--background);
-  margin: 0;
-  padding: 0;
-}
-
-/* App Container */
-.app-container {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-}
-
-/* Sidebar */
-.app-sidebar {
-  width: 80px;
-  background: var(--sidebar-bg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
-  gap: 24px;
-  box-shadow: var(--shadow);
-}
-
-.app-sidebar-icon {
-  font-size: 24px;
-  color: var(--primary-text);
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 50%;
-  transition: 0.3s ease-in-out;
-}
-
-.app-sidebar-icon:hover {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-/* Main Content */
-.main-content {
-  flex: 1;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Header */
-.app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 20px;
-}
-
-.search-input {
-  flex: 1;
-  padding: 12px;
-  border-radius: var(--border-radius);
-  border: 1px solid #ccc;
-  outline: none;
-  font-size: 16px;
-}
-
-.new-note-btn {
-  display: flex;
-  align-items: center;
-  background: var(--note-orange-dark);
-  color: white;
-  border: none;
-  padding: 12px 16px;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  font-size: 16px;
-  margin-left: 16px;
-  transition: 0.3s;
-}
-
-.new-note-btn:hover {
-  background: #d35a3f;
-}
-
-.new-note-link {
-  color: white;
-  text-decoration: none;
-  margin-left: 8px;
-}
-
-/* Notes Grid */
-.notes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 20px;
-}
-
-/* Note Cards */
-.note-card {
-  background: white;
-  padding: 16px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  transition: transform 0.2s ease-in-out;
-  display: flex;
+    --background: #fdf6ee;
+    --sidebar-bg: #f5eadd;
+    --primary-text: #4a4a4a;
+    --note-orange-dark: #eb7956;
+    --note-orange-light: #f8d1b3;
+    --note-yellow-dark: #e7b65b;
+    --note-yellow-light: #f4e1a1;
+    --border-radius: 16px;
+    --shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--background);
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* App Container */
+  .app-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  /* Sidebar */
+  .app-sidebar {
+    width: 80px;
+    background: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    gap: 24px;
+    box-shadow: var(--shadow);
+  }
+  
+  .app-sidebar-icon {
+    font-size: 24px;
+    color: var(--primary-text);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .app-sidebar-icon:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header */
+  .app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+  
+  .search-input {
+    flex: 1;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  .new-note-btn {
+    display: flex;
+    align-items: center;
+    background: var(--note-orange-dark);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 16px;
+    transition: 0.3s;
+  }
+  
+  .new-note-btn:hover {
+    background: #d35a3f;
+  }
+  
+  .new-note-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 8px;
+  }
+  
+  /* Notes Grid */
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Note Cards */
+  .note-card {
+    background: white;
+    padding: 16px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease-in-out;
+    display: flex;
   flex-direction: column;
   justify-content: space-between; /* Push buttons to the bottom */
   min-height: 150px;
-}
-
-.note-card:hover {
-  transform: translateY(-5px);
-}
-
-/* Color Variations */
-.note-bg-orange-dark {
-  background: var(--note-orange-dark);
-  color: white;
-}
-
-.note-bg-orange-light {
-  background: var(--note-orange-light);
-}
-
-.note-bg-yellow-dark {
-  background: var(--note-yellow-dark);
-}
-
-.note-bg-yellow-light {
-  background: var(--note-yellow-light);
-}
-
-/* Note Content */
-.note-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.note-description,
-.note-date {
-  font-size: 14px;
-}
-
-.note-list {
-  padding-left: 16px;
-}
-
-.note-list li {
-  font-size: 14px;
-}
-
-.edit-btn {
-  margin-bottom: 0px;
-  background: none;
-}
-.delete-btn {
-  background: none;
-}
+  }
+  
+  .note-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Color Variations */
+  .note-bg-orange-dark {
+    background: var(--note-orange-dark);
+    color: white;
+  }
+  
+  .note-bg-orange-light {
+    background: var(--note-orange-light);
+  }
+  
+  .note-bg-yellow-dark {
+    background: var(--note-yellow-dark);
+  }
+  
+  .note-bg-yellow-light {
+    background: var(--note-yellow-light);
+  }
+  
+  /* Note Content */
+  .note-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .note-description,
+  .note-date {
+    font-size: 14px;
+  }
+  
+  .note-list {
+    padding-left: 16px;
+  }
+  
+  .note-list li {
+    font-size: 14px;
+  }
+  
+  .edit-btn
+  {
+   margin-bottom: 0px;
+    background: none;
+  }
+  .delete-btn
+  {
+    background: none;
+  }

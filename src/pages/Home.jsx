@@ -11,15 +11,12 @@ import { FaRegStickyNote } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./../stylesheet/Home.css";
 import { useNavigate } from "react-router-dom";
-
-
 export default function NoteAppUI() {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const userEmail = "hai@gadu.com"; // Replace this with dynamic user email
-
+  const userEmail = "hai@gadu.com"
+ 
   useEffect(() => {
     const fetchNotes = async () => {
       try {
@@ -105,6 +102,12 @@ const handleEdit = (note) => {
               New Note
             </Link>
           </button>
+          <button className="new-note-btn collab-note">
+            <FiPlus />
+            <Link to="/collab-page" className="new-note-collab">
+              Collab Note
+            </Link>
+          </button>
         </div>
 
         {/* Notes Grid */}
@@ -125,7 +128,7 @@ const handleEdit = (note) => {
               {/* Action Buttons */}
               <div className="note-actions">
                 <button className="edit-btn" onClick={() => handleEdit(note)}>
-                  <FiEdit style={{ color: "white" }} /> Edit
+                  <FiEdit style={{ color: "black" }} /> Edit
                 </button>
 
                 <button
