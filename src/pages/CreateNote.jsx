@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FiMic } from "react-icons/fi";
 import "./../stylesheet/CreateNote.css";
-
+import { Link } from "react-router-dom";
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
@@ -75,10 +75,41 @@ const CreateNote = () => {
       setListening(false);
     }
   };
-  const handleSave = () =>
-  {
-    
-  }
+
+  const handleSave = async () => {
+    if (!Title || !detail) {
+        setError("Title and Note content are required!");
+        return;
+    }
+
+    setError(null);
+    setIsLoading(true);
+
+    try {
+        const response = await fetch("http://localhost:3001/save-note", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+                title: Title, 
+                email: "hai@gadu.com",  // Use dynamic email if available
+                detail: detail
+            }),
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.error || "Failed to save note");
+        }
+
+        console.log("Note saved:", data.note);
+    } catch (error) {
+        console.error("Error saving note:", error.message);
+        setError(error.message);
+    } finally {
+        setIsLoading(false);
+    }
+};
+
 
   return (
     <div>
@@ -96,7 +127,7 @@ const CreateNote = () => {
           <button className="summarize" onClick={handleSummarize}>
             AI Summarizer ✨
           </button>
-          <button className="save" onClick={handleSave}>Save</button>
+          <button className="save" onClick={handleSave}><Link to='/home' className="link">Save</Link></button>
         </div>
       </div>
       <br />

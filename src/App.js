@@ -5,6 +5,7 @@ import Login from './components/Login'
 import Home from './pages/Home'
 import CreateNote from './pages/CreateNote'
 import Voice from './components/Voice';
+import EditNote from './pages/EditNote';
 import './App.css'
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <Route path="/home" element={< Home/>} />
           <Route path="/create-note" element={< CreateNote/>} />
           <Route path="/voice" element={< Voice/>} />
-
+          <Route path="/edit-note" element={<EditNote />} />
         </Routes>
       </BrowserRouter>
     </main>

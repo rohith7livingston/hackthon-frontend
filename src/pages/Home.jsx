@@ -1,46 +1,140 @@
-import { useState } from "react";
-import { FiSearch, FiPlus, FiBell, FiSettings } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import {
+  FiSearch,
+  FiPlus,
+  FiBell,
+  FiSettings,
+  FiEdit,
+  FiTrash2,
+} from "react-icons/fi";
 import { FaRegStickyNote } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./../stylesheet/Home.css";
+import { useNavigate } from "react-router-dom";
+
 
 export default function NoteAppUI() {
-  const [notes, setNotes] = useState([
-    { id: 1, title: "Edit NFT landing page", description: "Here is a big project we are working on right now. Its design style is minimal.", color: "note-bg-orange-dark" },
-    { id: 2, title: "Meeting with the team’s guys", color: "note-bg-yellow-light" },
-    { id: 3, title: "Edit dribbble shot", date: "2023/02/06", color: "note-bg-orange-dark" },
-    { id: 4, title: "Design sprint training", date: "2023/02/05", color: "note-bg-orange-light" },
-    { id: 5, title: "Brainstorming for logo design", date: "2023/02/05", color: "note-bg-yellow-dark" },
-    { id: 6, title: "Complete design system", details: ["Navigation bars", "Date pickers"], date: "2023/02/04", color: "note-bg-orange-light" },
-  ]);
+  const [notes, setNotes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const userEmail = "hai@gadu.com"; // Replace this with dynamic user email
+
+  useEffect(() => {
+    const fetchNotes = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3001/get-notes?email=${userEmail}`
+        );
+        if (!response.ok) {
+          throw new Error(`Failed to fetch notes: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setNotes(data);
+      } catch (error) {
+        console.error("Error fetching notes:", error.message);
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNotes();
+  }, []);
+
+  // 🔹 Delete a note
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this note?")) return;
+
+    try {
+      const response = await fetch(`http://localhost:3001/delete-note/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete note");
+      }
+
+      // Remove the deleted note from UI
+      setNotes(notes.filter((note) => note._id !== id));
+    } catch (error) {
+      console.error("Error deleting note:", error.message);
+      alert("Failed to delete note!");
+    }
+  };
+
+  // 🔹 Edit a note (Replace alert with a form/modal if needed)
+const navigate = useNavigate();
+
+const handleEdit = (note) => {
+  navigate("/edit-note", { state: { note } });
+};
+
+
+  if (loading) return <p>Loading notes...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="app-container">
       {/* Sidebar */}
       <div className="app-sidebar">
-        <div className="app-sidebar-icon"><FaRegStickyNote /></div>
-        <div className="app-sidebar-icon"><FiBell /></div>
-        <div className="app-sidebar-icon"><FiSettings /></div>
+        <div className="app-sidebar-icon">
+          <FaRegStickyNote />
+        </div>
+        <div className="app-sidebar-icon">
+          <FiBell />
+        </div>
+        <div className="app-sidebar-icon">
+          <FiSettings />
+        </div>
       </div>
 
       {/* Main Content */}
       <div className="main-content">
         {/* Header */}
         <div className="app-header">
-          <input className="search-input" type="text" placeholder="Search anything..." />
+          <input
+            className="search-input"
+            type="text"
+            placeholder="Search anything..."
+          />
           <button className="new-note-btn">
-            <FiPlus /><Link to='/create-note' className="new-note-link">New Note</Link>
+            <FiPlus />
+            <Link to="/create-note" className="new-note-link">
+              New Note
+            </Link>
           </button>
         </div>
-        
+
         {/* Notes Grid */}
         <div className="notes-grid">
           {notes.map((note) => (
-            <div key={note.id} className={`note-card ${note.color}`}>
+            <div
+              key={note._id}
+              className={`note-card ${note.color || "default-color"}`}
+            >
               <h3 className="note-title">{note.title}</h3>
-              {note.description && <p className="note-description">{note.description}</p>}
-              {note.details && <ul className="note-list">{note.details.map((item, i) => <li key={i}>{item}</li>)}</ul>}
-              {note.date && <p className="note-date">{note.date}</p>}
+              {note.detail && <p className="note-description">{note.detail}</p>}
+              {note.date && (
+                <p className="note-date">
+                  {new Date(note.date).toLocaleDateString()}
+                </p>
+              )}
+
+              {/* Action Buttons */}
+              <div className="note-actions">
+                <button className="edit-btn" onClick={() => handleEdit(note)}>
+                  <FiEdit style={{ color: "white" }} /> Edit
+                </button>
+
+                <button
+                  className="delete-btn"
+                  onClick={() => handleDelete(note._id)}
+                >
+                  <FiTrash2 style={{ color: "red" }} /> Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>

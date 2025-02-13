@@ -1,0 +1,88 @@
+/* General styling */
+.edit-note-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fdf8f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Title input */
+  .edit-note-container input {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: #fff;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Note detail textarea */
+  .edit-note-container textarea {
+    width: 100%;
+    height: 250px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fffde7;
+    font-family: "Courier New", monospace;
+  }
+  
+  /* Error message */
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  /* Buttons */
+  .edit-note-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+  }
+  
+  .edit-note-buttons button {
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+   margin-left: 10px;
+   margin-right: 10px;
+  }
+  
+  .save-button {
+    background: #000;
+    color: white;
+  }
+  
+  .save-button:hover {
+    background: #333;
+  }
+  
+  .summarizer-button {
+    background: #4a90e2;
+    color: white;
+  }
+  
+  .summarizer-button:hover {
+    background: #357abf;
+  }
+  
+  .mic-button {
+    background: #ff4b4b;
+    color: white;
+  }
+  
+  .mic-button:hover {
+    background: #d83434;
+  }
+  
