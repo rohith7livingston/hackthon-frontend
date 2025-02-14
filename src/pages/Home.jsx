@@ -11,7 +11,7 @@ import { FaRegStickyNote } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./../stylesheet/Home.css";
 import { useNavigate } from "react-router-dom";
-export default function NoteAppUI() {
+export default function Home() {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
