@@ -11,7 +11,7 @@ import { FaRegStickyNote } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./../stylesheet/Home.css";
 import { useNavigate } from "react-router-dom";
-export default function Home() {
+function Home() {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -69,8 +69,6 @@ const handleEdit = (note) => {
 };
 
 
-  if (loading) return <p>Loading notes...</p>;
-  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="app-container">
@@ -145,3 +143,4 @@ const handleEdit = (note) => {
     </div>
   );
 }
+export default Home;
